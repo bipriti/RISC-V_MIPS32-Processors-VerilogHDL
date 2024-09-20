@@ -4,7 +4,6 @@
 ```verilog
 // RISC PROCESSOR - MIPS32 DESIGN CODE
 
-
 module pipe_MIPS32 (clk1, clk2);        // Two-phase clock
     input clk1, clk2;
 
