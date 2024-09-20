@@ -2,6 +2,7 @@
 
 // Program 1 on Processor RISC
 
+
 module test_mips32;
     reg clk1, clk2;
     integer k;
