@@ -10,13 +10,12 @@ module pipe_MIPS32 (clk1, clk2);        // Two-phase clock
 
     reg [31:0] PC, IF_ID_IR, IF_ID_NPC;
     reg [31:0] ID_EX_IR, ID_EX_NPC, ID_EX_A, ID_EX_B, ID_EX_Imm;
-    reg [2:0] ID_EX_type, EX_MEM_type, MEM_WB_type;      // EX_MEM_type variable was missing
+    reg [2:0] ID_EX_type, EX_MEM_type, MEM_WB_type;      
     reg [31:0] EX_MEM_IR, EX_MEM_ALUOut, EX_MEM_B;
     reg EX_MEM_cond;
     reg [31:0] MEM_WB_IR, MEM_WB_ALUOut, MEM_WB_LMD;
-    reg [31:0] regbank [0:31];              // Corrected 'regbank' name
-    reg [31:0] mem [0:1023];                // Memory array corrected as 'mem'
-
+    reg [31:0] regbank [0:31];              
+    reg [31:0] mem [0:1023];                
     // Instruction opcodes and parameter declarations
     parameter ADD = 6'b000000, SUB = 6'b000001, AND = 6'b000010, OR = 6'b000011,
               SLT = 6'b000100, MUL = 6'b000101, HLT = 6'b111111, LW = 6'b001000,
@@ -51,13 +50,11 @@ module pipe_MIPS32 (clk1, clk2);        // Two-phase clock
         if (IF_ID_IR[25:21] == 5'b00000)
             ID_EX_A <= 0;
         else
-            ID_EX_A <= #2 regbank[IF_ID_IR[25:21]]; // Corrected 'Reg' to 'regbank'
-
+            ID_EX_A <= #2 regbank[IF_ID_IR[25:21]]; 
         if (IF_ID_IR[20:16] == 5'b00000)
             ID_EX_B <= 0;
         else
-            ID_EX_B <= #2 regbank[IF_ID_IR[20:16]]; // Corrected 'Reg' to 'regbank'
-
+            ID_EX_B <= #2 regbank[IF_ID_IR[20:16]]; 
         ID_EX_NPC <= #2 IF_ID_NPC;
         ID_EX_IR <= #2 IF_ID_IR;
         ID_EX_Imm <= #2 {{16{IF_ID_IR[15]}}, IF_ID_IR[15:0]}; // Sign-extend immediate value
@@ -86,8 +83,8 @@ module pipe_MIPS32 (clk1, clk2);        // Two-phase clock
                 case (ID_EX_IR[31:26])  // "opcode"
                     ADD : EX_MEM_ALUOut <= #2 ID_EX_A + ID_EX_B;
                     SUB : EX_MEM_ALUOut <= #2 ID_EX_A - ID_EX_B;
-                    AND : EX_MEM_ALUOut <= #2 ID_EX_A & ID_EX_B;  // Corrected 'EX_MEM_ALLOut' to 'EX_MEM_ALUOut'
-                    OR  : EX_MEM_ALUOut <= #2 ID_EX_A | ID_EX_B;  // Same correction
+                    AND : EX_MEM_ALUOut <= #2 ID_EX_A & ID_EX_B;  
+                    OR  : EX_MEM_ALUOut <= #2 ID_EX_A | ID_EX_B;  
                     SLT : EX_MEM_ALUOut <= #2 (ID_EX_A < ID_EX_B);
                     MUL : EX_MEM_ALUOut <= #2 ID_EX_A * ID_EX_B;
                     default: EX_MEM_ALUOut <= #2 32'hxxxxxxxx;
