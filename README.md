@@ -1,4 +1,4 @@
-# RISC-V & MIPS32 Processors - Verilog HDL
+## RISC-V Processor Implementation with Pipelining | MIPS32 | Verilog HDL
 
 [Click here to view the project report](https://github.com/bipriti/RISC-V_MIPS32-Processors-VerilogHDL/blob/main/RISC-V%20Processor%20MIPS32_Project.pdf)
 
