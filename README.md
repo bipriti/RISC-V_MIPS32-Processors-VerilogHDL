@@ -20,8 +20,6 @@ To enhance the throughput and performance, the MIPS32 processor in this project 
 
 By incorporating pipelining, the processor can work on multiple instructions simultaneously, significantly improving overall efficiency and execution speed.
 
-## Project Design and Test Files
+## Project Design file
 
 - [Click here to view the design code of the RISC processor](https://github.com/bipriti/RISC-V_MIPS32-Processors-VerilogHDL/blob/main/RISC_pipe_MIPS32_DesignCode.v)
-- [Click here to view the first program testbench](https://github.com/bipriti/RISC-V_MIPS32-Processors-VerilogHDL/blob/main/Program1_tb.v)
-- [Click here to view the second program testbench](https://github.com/bipriti/RISC-V_MIPS32-Processors-VerilogHDL/blob/main/Program2_tb.v)
